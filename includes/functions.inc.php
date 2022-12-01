@@ -215,3 +215,40 @@ function scoreQuiz($quiz_id, $q1, $q2, $q3, $q4)
 
     return ($q1res + $q2res + $q3res + $q4res) / 4;
 }
+
+function insertFeedback($conn, $user_id, $type, $feedback)
+{
+    $sql = "INSERT INTO FEEDBACK(USER_ID, TYPE, FEEDBACK) VALUES(:user_id, :type, :feedback)";
+    $s = oci_parse($conn, $sql);
+    oci_bind_by_name($s, ":user_id", $user_id, -1);
+    oci_bind_by_name($s, ":type", $type, -1);
+    oci_bind_by_name($s, ":feedback", $feedback, -1);
+    oci_execute($s);
+}
+
+function getCompletion($conn, $user_id)
+{
+    $lesson_count = 4;
+    $quiz_count = 4;
+
+    $sql = "SELECT * FROM COMPLETE_LESSON WHERE USER_ID = :user_id";
+    $s = oci_parse($conn, $sql);
+    oci_bind_by_name($s, ":user_id", $user_id, -1);
+    oci_execute($s);
+    oci_fetch_all($s, $res, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
+
+    $lesson_completion = count($res);
+
+    $sql = "SELECT * FROM QUIZ_RESULT WHERE USER_ID = :user_id_bv AND LESSON_NAME = :lesson_name_bv";
+    $s = oci_parse($conn, $sql);
+    oci_bind_by_name($s, ":user_id_bv", $user_id_bv, -1);
+    oci_bind_by_name($s, ":lesson_name_bv", $lesson_name_bv, -1);
+    oci_execute($s);
+    oci_fetch_all($s, $res, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
+
+    $quiz_completion = count($res);
+
+    $total_completion = ($lesson_completion + $quiz_completion) / ($lesson_count + $quiz_count);
+
+    return $total_completion;
+}
