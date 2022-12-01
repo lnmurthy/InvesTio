@@ -41,12 +41,32 @@ include_once './header.php';
   <!-- Newsletter -->
   <section class="bg-primary text-light p-5">
     <div class="container">
+    <?php
+        if (isset($_GET["msg"])) {
+          $msg = $_GET["msg"];
+          if ($msg == "bademail") {
+            echo "<div style = 'position:relative; left:500px; top:2px;'>
+                  <h3 style='color:darkred'>Enter a valid email!</h3>
+                  </div>";
+          } else {
+            echo "<div style = 'position:relative; left:500px; top:2px;'>
+                  <h3 style='color:darkgreen'>Successfully signed up for our newsletter!</h3>
+                  </div>";
+          }
+        }
+        ?>
       <div class="d-md-flex justify-content-between align-items-center">
         <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
-
         <div class="input-group news-input">
-          <input type="text" class="form-control" placeholder="Enter Email" />
-          <button class="btn btn-dark btn-lg" type="button">Submit</button>
+          <input type="text" class="form-control" placeholder="Enter Email" id="emailInput" />
+          <button class="btn btn-dark btn-lg" type="button" id="emailBtn">Submit</button>
+          <script type="text/javascript">
+            document.getElementById("emailBtn").onclick = function() {
+              address = "./includes/email.inc.php?email="
+              email = document.getElementById("emailInput").value
+              location.href = address.concat(email);
+            };
+          </script>
         </div>
       </div>
     </div>

@@ -19,6 +19,11 @@ include_once './header.php';
       <p class="lead text-center text-white mb-5">
         Our quizzes are structured for beginners
       </p>
+      <?php
+      if (isset($_GET["score"])) {
+        echo "You scored ".$_GET["score"]." on quiz ".$_GET["quiz"]."!";
+      }
+      ?>
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="card bg-light">

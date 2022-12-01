@@ -17,7 +17,20 @@ include_once './header.php';
     <div class="container">
       <h2 class="text-center mb-4">Investment Types</h2>
 
-      <a href="./lessons.php" class="nav-link">Back to Lessons</a>
+      <button style="background-color: rgba(51, 51, 51, 0.05);
+                border-radius: 8px;
+                border-width: 0;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 20px;
+                list-style: none;
+                margin: 0;
+                padding: 8px 12px;">
+        <a href="./lessons.php" class="nav-link">Back to Lessons</a>
+      </button>
 
       <p style="padding-top: 50px">There are several types of investments, each with its own benefits. The most common, and the ones we will be discussing are Bonds, Stocks, ETFs, and Mutual Funds.
       </p>
@@ -55,6 +68,22 @@ include_once './header.php';
         There are many types of investments, and for investments like stocks, there are many different stocks to choose from. Mutual funds are pooled investments, collections of all sorts of investments, various stocks, bonds, and other investments, that are handled by money managers. When you buy into a mutual fund, you are handing your money to a money manager who will take your money, and the money from other investors, and will invest it for you. By pooling the money of multiple investors, mutual funds allow for more diversification, and because they are managed by professionals, often a part of large investment companies, mutual funds offer less risk. Mutual funds do charge annual fees for the services they provide.
       </div>
 
+    </div>
+    <div style="position:relative; left: 80px; top: 20px;">
+      <form action="./quiz3.php" method="POST">
+        <button name='submit' type="submit" style="
+              align-items: center;
+              appearance: none;
+              background-color: #fff;
+              border-radius: 24px;
+              border-style: none;
+              box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+              box-sizing: border-box;
+              color: #3c4043;
+              cursor: pointer;
+              display: inline-flex;
+              padding: 5px"> Take the Quiz! </button>
+      </form>
     </div>
   </section>
 </body>

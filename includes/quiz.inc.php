@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     if (isset($_SESSION["username"])) {
         logQuiz($quiz_id, $avg);
     }
-    header("location: ../quiz.php?score=" . $avg);
+    header("location: ../quiz.php?score=".$avg."&quiz=".$quiz_id);
     exit();
 } else {
     header("location: ../quiz.php");
