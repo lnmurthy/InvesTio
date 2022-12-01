@@ -1,13 +1,7 @@
 <?php
 include_once './header.php';
 include_once './includes/functions.inc.php';
-if(isset($_POST['submit'])) {
-  if(isset($_SESSION["username"])) {
-    completeLesson("two");
-  }
-} else {
-  validQuiz("two");
-}
+handleQuizArrival("two");
 ?>
 
 <!doctype html>

@@ -88,8 +88,9 @@ function createUser($conn, $uname, $email, $pwd)
     addEmail($conn, $email);
 }
 
-function addEmail($conn, $email) {
-    if(invalidEmail($email)) {
+function addEmail($conn, $email)
+{
+    if (invalidEmail($email)) {
         header("location: ../index.php?msg=bademail");
         exit();
     }
@@ -106,6 +107,22 @@ function addEmail($conn, $email) {
         $s = oci_parse($conn, $sql);
         oci_bind_by_name($s, ":email_address", $email, -1);
         oci_execute($s);
+    }
+}
+
+function handleQuizArrival($lesson)
+{
+    if (isset($_POST['submit'])) {
+        if (isset($_SESSION["username"])) {
+            if (!validQuiz($lesson)) {
+                completeLesson($lesson);
+            }
+        }
+    } else {
+        if (!validQuiz($lesson)) {
+            header("location: ./lesson_" . $lesson . ".php");
+            exit();
+        };
     }
 }
 
@@ -136,8 +153,8 @@ function validQuiz($lesson_name)
 {
     $res = [];
     $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
-    if(isset($_SESSION["username"])) {
-        $user_id_bv = $_SESSION["username"];
+    if (isset($_SESSION["username"])) {
+        $user_id_bv = $_SESSION["userid"];
         $lesson_name_bv = $lesson_name;
         $sql = "SELECT * FROM COMPLETE_LESSON WHERE USER_ID = :user_id_bv AND LESSON_NAME = :lesson_name_bv";
         $s = oci_parse($conn, $sql);
@@ -147,20 +164,20 @@ function validQuiz($lesson_name)
         oci_fetch_all($s, $res, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
     }
     if (count($res) === 0) {
-        header("location: ./lesson_" . $lesson_name . ".php");
-        exit();
+        return false;
     }
+    return true;
 }
 
-function completeLesson($lesson_name) {
+function completeLesson($lesson_name)
+{
     $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
 
     // Log results in DB
-    $sql = "INSERT INTO LESSON_COMPLETE(LESSON_NAME, USER_ID) 
-            VALUES (:lesson_name, :user_id)";
+    $sql = "INSERT INTO COMPLETE_LESSON(LESSON_NAME, USER_ID) VALUES (:lesson_name, :user_id)";
     $s = oci_parse($conn, $sql);
     oci_bind_by_name($s, ":lesson_name", $lesson_name, -1);
-    oci_bind_by_name($s, ":user_id", $_SESSION["USER_ID"], -1);
+    oci_bind_by_name($s, ":user_id", $_SESSION["userid"], -1);
     oci_execute($s);
 }
 
@@ -173,7 +190,7 @@ function logQuiz($quiz_id, $avg)
             VALUES (:quiz_id, :user_id :avg)";
     $s = oci_parse($conn, $sql);
     oci_bind_by_name($s, ":quiz_id", $quiz_id, -1);
-    oci_bind_by_name($s, ":user_id", $_SESSION["USER_ID"], -1);
+    oci_bind_by_name($s, ":user_id", $_SESSION["userid"], -1);
     oci_bind_by_name($s, ":avg", $avg, -1);
     oci_execute($s);
 }
