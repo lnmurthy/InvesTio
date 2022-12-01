@@ -76,7 +76,7 @@ include_once './header.php';
 
     </div>
     <div style="position:relative; left: 80px; top: 20px;">
-      <form action="./quiz3.php" method="POST">
+      <form action="./quiz2.php" method="POST">
         <button name='submit' type="submit" style="
               align-items: center;
               appearance: none;

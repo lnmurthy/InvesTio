@@ -1,7 +1,13 @@
 <?php
 include_once './header.php';
 include_once './includes/functions.inc.php';
-validQuiz("three");
+if(isset($_POST['submit'])) {
+  if(isset($_SESSION["username"])) {
+    completeLesson("three");
+  }
+} else {
+  validQuiz("three");
+}
 ?>
 
 <!doctype html>
