@@ -9,13 +9,11 @@ if (isset($_POST["submit"])) {
 
     require_once './functions.inc.php';
 
-    // Add something for checking empty quiz questions ... eh :/
-
     $avg = scoreQuiz($quiz_id, $q1, $q2, $q3, $q4);
     if (isset($_SESSION["username"])) {
         logQuiz($quiz_id, $avg);
     }
-    header("location: ../quiz.php?score=".$avg."&quiz=".$quiz_id);
+    header("location: ../quiz.php?score=".$avg."&quiz=".$quiz_id."&submit=1");
     exit();
 } else {
     header("location: ../quiz.php");

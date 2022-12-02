@@ -22,51 +22,37 @@ if (isset($_SESSION["userid"])) {
     </div>
 
     <body>
-        <div class="logo">
-            <h1>login here</h1>
-        </div>
-        <header>
+
+        <body>
             <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card border-0 shadow rounded-3 my-5">
+                            <div class="card-body p-4 p-sm-5">
+                                <h2 class="text-center">Sign In</h2> <br>
 
-            </div>
-        </header>
-        <br />
-        <div class="old-header">
-            </header>
-            <br />
-            <form method="POST" action="./includes/login.inc.php" enctype="application/x-www-form-urlencoded">
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <label for="username-lbl">username</label>
-                    </div>
-                    <div>
-                        <input id="username" type="text" class="textbox" placeholder="Username" required name="username" />
-                    </div>
+                                <form class="text-center" method="POST" action="./includes/login.inc.php">
+                                    <div class="grid-item">
+                                        <label for="username-lbl">Username</label>
+                                    </div>
+                                    <div>
+                                        <input required id="username" type="text" class="textbox" placeholder="Username" required name="username" />
+                                    </div>
+                                    <div class="grid-item">
+                                        <label for="email">Password </label>
+                                    </div>
+                                    <div>
+                                        <input required id="password" type="password" class="textbox" placeholder="Password" required name="password" />
+                                    </div>
+                                    <br>
+                                    <button class="btn btn-dark btn-login fw-bold" type="submit" name="submit">Sign In</button>
 
-                    <div class="grid-item">
-                        <label for="password">password</label>
-                    </div>
-                    <div>
-                        <input id="password2" type="password" class="textbox" placeholder="Password" required name="password" />
-                    </div>
-
-                </div>
-                <div>
-                    <input class="submit" type="submit" value="Submit" name="submit">
-                </div>
-            </form>
-            <?php
-            if (isset($_GET["error"])) {
-                if ($_GET["error"] == "emptyinput") {
-                    echo "<p>Fill in all fields!</p>";
-                } else if ($_GET["error"] == "invalidcredentials") {
-                    echo "<p>Account does not exist!</p>";
-                }
-            }
-            ?>
-        </div>
-    </body>
-</body>
-<?php
-include_once './footer.php';
-?>
+                                    <?php
+                                    if (isset($_GET["error"])) {
+                                        if ($_GET["error"] == "emptyinput") {
+                                            echo "<p>Fill in all fields!</p>";
+                                        } else if ($_GET["error"] == "badcreds") {
+                                            echo "<p style=color:red>Account does not exist!</p>";
+                                        }
+                                    }
+                                    ?>

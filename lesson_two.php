@@ -95,7 +95,3 @@ include_once './header.php';
 </body>
 
 </html>
-
-<?php
-include_once './footer.php';
-?>

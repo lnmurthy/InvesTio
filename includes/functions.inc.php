@@ -216,14 +216,18 @@ function scoreQuiz($quiz_id, $q1, $q2, $q3, $q4)
     return ($q1res + $q2res + $q3res + $q4res) / 4;
 }
 
-function insertFeedback($conn, $user_id, $type, $feedback)
+function insertFeedback($conn, $feedback_type, $userid, $username, $subject, $textbox)
 {
-    $sql = "INSERT INTO FEEDBACK(USER_ID, TYPE, FEEDBACK) VALUES(:user_id, :type, :feedback)";
+    $sql = "INSERT INTO FEEDBACK(USER_ID, TYPE, FEEDBACK, SUBJECT, USERNAME) VALUES (:user_id, :type, :feedback, :subject, :username)";
     $s = oci_parse($conn, $sql);
-    oci_bind_by_name($s, ":user_id", $user_id, -1);
-    oci_bind_by_name($s, ":type", $type, -1);
-    oci_bind_by_name($s, ":feedback", $feedback, -1);
-    oci_execute($s);
+
+    oci_bind_by_name($s, "user_id:", $userid, -1);
+    oci_bind_by_name($s, ":type", $feedback_type, -1);
+    oci_bind_by_name($s, ":subject", $subject, -1);
+    oci_bind_by_name($s, ":username", $username, -1);
+    oci_bind_by_name($s, ":feedback", $textbox, -1);
+
+    return oci_execute($s);
 }
 
 function getCompletion($conn, $user_id)

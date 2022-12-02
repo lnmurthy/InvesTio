@@ -31,34 +31,37 @@ include_once './header.php';
             }
             ?>
           </form>
+          <br>
+          <br>
+          <br>
+          <br>
         </div>
 
-        <img class="img-fluid w-50 d-none d-sm-block" src="img/graph2.png" alt="" />
       </div>
-    </div>
-    <br>
+      <br>
   </section>
   <!-- Newsletter -->
   <section class="bg-primary text-light p-5">
     <div class="container">
-    <?php
-        if (isset($_GET["msg"])) {
-          $msg = $_GET["msg"];
-          if ($msg == "bademail") {
-            echo "<div style = 'position:relative; left:500px; top:2px;'>
+      <?php
+      if (isset($_GET["msg"])) {
+        $msg = $_GET["msg"];
+        if ($msg == "bademail") {
+          echo "<div style = 'position:relative; left:500px; top:2px;'>
                   <h3 style='color:darkred'>Enter a valid email!</h3>
                   </div>";
-          } else {
-            echo "<div style = 'position:relative; left:500px; top:2px;'>
+        } else {
+          echo "<div style = 'position:relative; left:500px; top:2px;'>
                   <h3 style='color:darkgreen'>Successfully signed up for our newsletter!</h3>
                   </div>";
-          }
         }
-        ?>
+      }
+      ?>
       <div class="d-md-flex justify-content-between align-items-center">
-        <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
+        <h5 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h5>
+
         <div class="input-group news-input">
-          <input type="text" class="form-control" placeholder="Enter Email" id="emailInput" />
+          <input type="text" id="emailInput" class="form-control" placeholder="Enter Email" />
           <button class="btn btn-dark btn-lg" type="button" id="emailBtn">Submit</button>
           <script type="text/javascript">
             document.getElementById("emailBtn").onclick = function() {
@@ -113,17 +116,28 @@ include_once './header.php';
               <p class="card-text">
                 Feedback is quintessential for growth. Let us know what we can do better
               </p>
-              <a href="#" class="btn btn-primary">Submit a Comment</a>
+              <a href="./feedback.php" class="btn btn-primary">Contact Us</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </section>
+  <section>
+    <div class="container">
+      <div class="d-sm-flex align-items-centers justify-content-between">
+        <h2><small>The relevancy</small> </h2>
+      </div>
+  </section>
+  <div>
+    <img class="img-fluid w-100 d-none d-sm-block" src="./img/stats3.png" alt="" />
+
+    <!-- Footer -->
+    <?php
+    include_once './footer.php';
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-<?php
-include_once './footer.php';
-?>

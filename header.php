@@ -16,7 +16,10 @@ session_start();
                     <a href="lessons.php" class="nav-link"> Lessons</a>
                 </li>
                 <li class="nav-item">
-                    <a href="quiz.php" class="nav-link"> Quiz</a>
+                    <a href="quiz.php" class="nav-link"> Quizzes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.php" class="nav-link"> Feedback</a>
                 </li>
 
                 <?php
