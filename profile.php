@@ -1,5 +1,9 @@
 <?php
 include_once './header.php';
+if (!isset($_SESSION["userid"])) {
+    header("location: ./index.php");
+    exit();
+}
 ?>
 
 <!doctype html>
@@ -26,7 +30,7 @@ include_once './header.php';
                 </div>
                 <br>
     </section>
-    <!-- Boxes -->
+    <!-- total progress -->
     <section class="p-5">
         <div class="container">
             <div class="row text-center g-4">
@@ -44,7 +48,7 @@ include_once './header.php';
                                 You have completed
                                 <?php
                                 include_once "./includes/functions.inc.php";
-                                echo " ".getLessonProgress($_SESSION["userid"])." ";
+                                echo " " . getLessonProgress($_SESSION["userid"]) . " ";
                                 ?>
                                 out of 3 lessons
                             </p>
@@ -61,13 +65,69 @@ include_once './header.php';
                             <p class="card-text">
                                 Your progress through the quizzes
                             </p>
-                            <p>
-                                You have completed 
+                            You have completed
+                            <?php
+                            include_once "./includes/functions.inc.php";
+                            echo getQuizProgress($_SESSION["userid"]);
+                            ?>
+                            out of 3 quizzes
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- quiz results  -->
+    <section class="p-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card bg-secondary text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Quiz 1</h3>
+                            <p class="card-text">
+                                You scored
                                 <?php
                                 include_once "./includes/functions.inc.php";
-                                echo getQuizProgress($_SESSION["userid"]);
+                                echo " " . getQuizScore(1) . "/4";
                                 ?>
-                                out of 3 quizzes
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-person-square"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Quiz 2</h3>
+                            <p class="card-text">
+                                You scored
+                                <?php
+                                include_once "./includes/functions.inc.php";
+                                echo " " . getQuizScore(2) . "/4";
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-secondary text-light">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-person-square"></i>
+                            </div>
+                            <h3 class="card-title mb-3">Quiz 3</h3>
+                            <p class="card-text">
+                                You scored
+                                <?php
+                                include_once "./includes/functions.inc.php";
+                                echo " " . getQuizScore(3) . "/4";
+                                ?>
                             </p>
                         </div>
                     </div>

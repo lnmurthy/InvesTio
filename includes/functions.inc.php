@@ -120,7 +120,7 @@ function handleQuizArrival($lesson)
         }
     } else {
         if (!validQuiz($lesson)) {
-            header("location: ./lesson_" . $lesson . ".php");
+            header("location: ./lesson_" . $lesson . ".php?msg=redirect");
             exit();
         };
     }
@@ -181,28 +181,26 @@ function completeLesson($lesson_name)
     oci_execute($s);
 }
 
-function logQuiz($quiz_id, $avg)
+function logQuiz($conn, $quiz_id, $score, $user_id)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
 
+    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
     // Log results in DB
-    $sql = "INSERT INTO QUIZ_RESULT(QUIZ_ID, USER_ID, QUESTION1, QUESTION2, QUESTION3, QUESTION4) 
-            VALUES (:quiz_id, :user_id :avg)";
+    $sql = "INSERT INTO QUIZ_RESULT(QUIZ_ID, USER_ID, SCORE) VALUES (:quiz_id, :user_id, :score)";
     $s = oci_parse($conn, $sql);
     oci_bind_by_name($s, ":quiz_id", $quiz_id, -1);
-    oci_bind_by_name($s, ":user_id", $_SESSION["userid"], -1);
-    oci_bind_by_name($s, ":avg", $avg, -1);
-    oci_execute($s);
+    oci_bind_by_name($s, ":user_id", $user_id, -1);
+    oci_bind_by_name($s, ":score", $score, -1);
+
+    return oci_execute($s) ? 1 : 0;
 }
 
-function scoreQuiz($quiz_id, $q1, $q2, $q3, $q4)
+function scoreQuiz($conn, $quiz_id, $q1, $q2, $q3, $q4)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
-
     // Fetch quiz
     $sql = "SELECT * FROM QUIZ WHERE QUIZ_ID = :quiz_id";
     $s = oci_parse($conn, $sql);
-    oci_bind_by_name($s, ":user_id_bv", $quiz_id, -1);
+    oci_bind_by_name($s, ":quiz_id", $quiz_id, -1);
     oci_execute($s);
     oci_fetch_all($s, $res, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
 
@@ -213,7 +211,7 @@ function scoreQuiz($quiz_id, $q1, $q2, $q3, $q4)
     $q3res = ($qs["QUESTION3"] == $q3) ? 1 : 0;
     $q4res = ($qs["QUESTION4"] == $q4) ? 1 : 0;
 
-    return ($q1res + $q2res + $q3res + $q4res) / 4;
+    return ($q1res + $q2res + $q3res + $q4res);
 }
 
 function insertFeedback($conn, $feedback_type, $userid, $username, $subject, $textbox)
@@ -264,4 +262,28 @@ function getQuizProgress($userid)
     $quiz_progress = count($res);
 
     return $quiz_progress;
+}
+
+function getQuizScore($quizid)
+{
+    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+
+    $sql =
+        "SELECT MAX(SCORE) AS MAXSCORE 
+    FROM QUIZ_RESULT 
+    WHERE QUIZ_ID = :quizid AND USER_ID = :userid";
+
+    $s = oci_parse($conn, $sql);
+
+    oci_bind_by_name($s, ":userid", $_SESSION['userid'], -1);
+    oci_bind_by_name($s, ":quizid", $quizid, -1);
+
+    oci_execute($s);
+    oci_fetch_all($s, $res, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
+
+    if (count($res) === 0) {
+        return '-';
+    }
+
+    return $res[0]['MAXSCORE'];
 }

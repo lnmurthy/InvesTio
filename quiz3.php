@@ -37,8 +37,11 @@ handleQuizArrival("three");
                 <div class="modal-body">
                   <div class="col-xs-3 5"></div>
                   <div class="quiz" id="quiz" data-toggle="buttons">
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">True</label>
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">False</label>
+                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                      <input type="radio" name="q_answer" value="1">True</label>
+
+                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                      <input type="radio" name="q_answer" value="2">False</label>
                   </div>
                   <div class="modal-header">
                     <h3>Q2. 401(k) plans are employer-sponsored plans for saving toward education.</h3>
@@ -46,8 +49,11 @@ handleQuizArrival("three");
                   <div class="modal-body">
                     <div class="col-xs-3 5"></div>
                     <div class="quiz" id="quiz" data-toggle="buttons">
-                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">True</label>
-                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">False</label>
+                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <input type="radio" name="q_answer1" value="1">True</label>
+
+                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <input type="radio" name="q_answer1" value="2">False</label>
                     </div>
                     <div class="modal-header">
                       <h3>Q3. A Traditional IRA allows you to contribute after-tax dollars towards your retirement.</h3>
@@ -55,8 +61,11 @@ handleQuizArrival("three");
                     <div class="modal-body">
                       <div class="col-xs-3 5"></div>
                       <div class="quiz" id="quiz" data-toggle="buttons">
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">True</label>
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">False</label>
+                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                          <input type="radio" name="q_answer2" value="1">True</label>
+
+                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                          <input type="radio" name="q_answer2" value="2">False</label>
                       </div>
                       <div class="modal-header">
                         <h3>Q4. A Roth IRA is a type of 401(k).</h3>
@@ -64,12 +73,14 @@ handleQuizArrival("three");
                       <div class="modal-body">
                         <div class="col-xs-3 5"></div>
                         <div class="quiz" id="quiz" data-toggle="buttons">
-                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">True</label>
-                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">False</label>
-                          <br><br>
+                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                            <input type="radio" name="q_answer3" value="1">True</label>
+
+                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                            <input type="radio" name="q_answer3" value="2">False</label>
+
                           <button type="submit" class="btn btn-primary" name="submit">
-                            Submit
-                            <!-- <a href="./quiz.php?submit=1" class="btn btn-primary" class="nav-link">Submit</a> -->
+                            <a class="btn btn-primary" class="nav-link">Submit</a>
                           </button>
                         </div>
                       </div>

@@ -15,7 +15,14 @@ include_once './header.php';
 <body>
   <section id="lessons" class="p-5">
     <div class="container">
-      <h2 class="text-center mb-4">Get Started with Investing</h2>
+      <h2 class="text-center mb-4">Get Started With Investing</h2>
+      <?php
+      if (isset($_GET["msg"])) {
+        if ($_GET['msg'] == 'redirect') {
+          echo '<h4 class="text-center mb-4">(Take the Lesson First!)</h4>';
+        }
+      }
+      ?>
 
       <button style="background-color: rgba(51, 51, 51, 0.05);
                 border-radius: 8px;

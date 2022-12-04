@@ -97,7 +97,7 @@ include_once './header.php';
       </p>
       <?php
       if (isset($_GET["score"])) {
-        echo "You scored " . $_GET["score"] . " on quiz " . $_GET["quiz"] . "!";
+        echo "<h2 class='text-center text-white'> You scored " . $_GET["score"] . " on quiz " . $_GET["quiz"] . "!</h2>";
       }
       ?>
       <section class="p-5">

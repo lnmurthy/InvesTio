@@ -27,74 +27,78 @@ handleQuizArrival("two");
 
         </div>
         <br>
-        </form method="POST" action="./includes/quiz.inc.php?quiz_id=2">
-        <div class="container-fluid">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3>Q1. What is an advantage of investing?</h3>
-              </div>
-              <div class="modal-body">
-                <div class="col-xs-3 5"></div>
-                <div class="quiz" id="quiz" data-toggle="buttons">
-                  <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">Financial security</label>
-                  <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">Financial freedom</label>
-                  <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">Free medical bills</label>
-                  <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">Smart Money Management</label>
-                </div>
+        <form method="POST" action="./includes/quiz.inc.php?quiz_id=2">
+          <div class="container-fluid">
+            <div class="modal-dialog">
+              <div class="modal-content">
                 <div class="modal-header">
-                  <h3>Q2. What is the first step of investing?</h3>
+                  <h3>Q1. Most investors buy and sell through brokerage accounts.</h3>
                 </div>
                 <div class="modal-body">
                   <div class="col-xs-3 5"></div>
                   <div class="quiz" id="quiz" data-toggle="buttons">
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">Investing in your favorite stocks</label>
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">Day trading</label>
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">Identifying your personal goals and risks</label>
-                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">Short selling</label>
+                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                      <input type="radio" name="q1_answer" value="1">True</label>
+
+                    <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                      <input type="radio" name="q1_answer" value="2">False</label>
                   </div>
                   <div class="modal-header">
-                    <h3>Q3. All investments are subject to market conditions</h3>
+                    <h3>Q2. A Bond is partial ownership of a corporation.</h3>
                   </div>
                   <div class="modal-body">
                     <div class="col-xs-3 5"></div>
                     <div class="quiz" id="quiz" data-toggle="buttons">
-                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">True</label>
-                      <label class="element-animation1 btn btn-sm btn-outline-light""><span class=" btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">False</label>
+                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <input type="radio" name="q2_answer" value="1">True</label>
 
+                      <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                        <input type="radio" name="q2_answer" value="2">False</label>
                     </div>
                     <div class="modal-header">
-                      <h3>Q4. Select the incorrect fact about risk</h3>
+                      <h3>Q3. A company’s stock price fluctuates with the market’s expectations and evaluations of that
+                        company.</h3>
                     </div>
                     <div class="modal-body">
                       <div class="col-xs-3 5"></div>
                       <div class="quiz" id="quiz" data-toggle="buttons">
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1"> Risk is correlated with the future return on your investment</label>
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">Riskier investments are less certain, and thus require a higher incentive to entice investors, so riskier investments often have higher potential yields</label>
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">If you are risk-averse, you should expect higher returns for the security your investment offers</label>
-                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">if you are willing to deal with high risk, you could receive far better returns.
-                        </label>
-                      </div> <br>
-                      <button type="submit" class="btn btn-primary" name="submit">
-                        Submit
-                        <!-- <a href="./quiz.php?submit=1" class="btn btn-primary" class="nav-link">Submit</a> -->
-                      </button>
+                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                          <input type="radio" name="q3_answer" value="1">True</label>
 
+                        <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                          <input type="radio" name="q3_answer" value="2">False</label>
+                      </div>
+                      <div class="modal-header">
+                        <h3>Q4. An ETF’s price tracks an index, sector, or market</h3>
+                      </div>
+                      <div class="modal-body">
+                        <div class="col-xs-3 5"></div>
+                        <div class="quiz" id="quiz" data-toggle="buttons">
+                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                            <input type="radio" name="q4_answer" value="1">True</label>
+
+                          <label class="element-animation1 btn btn-sm btn-outline-light"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
+                            <input type="radio" name="q4_answer" value="2">False</label>
+                        </div> <br>
+                        <button type="submit" class="btn btn-primary" name="submit">
+                          <a class="btn btn-primary" class="nav-link">Submit</a>
+                        </button>
+
+                      </div>
                     </div>
                   </div>
-                </div>
-                </form>
-                <!-- Footer -->
-                <footer class="p-5 bg-dark text-white text-center position-relative">
-                  <div class="container">
-                    <p class="lead">Copyright &copy; InvesTio</p>
+        </form>
+        <!-- Footer -->
+        <footer class="p-5 bg-dark text-white text-center position-relative">
+          <div class="container">
+            <p class="lead">Copyright &copy; InvesTio</p>
 
-                    <a href="#" class="position-absolute bottom-0 end-0 p-5">
-                      <i class="bi bi-arrow-up-circle h1"></i>
-                    </a>
-                  </div>
-                </footer>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+              <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+          </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>

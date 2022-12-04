@@ -2,19 +2,22 @@
 session_start();
 
 if (isset($_POST["submit"])) {
+    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+
     $quiz_id = $_GET["quiz_id"];
-    $q1 = $_POST["question1"];
-    $q2 = $_POST["question2"];
-    $q3 = $_POST["question3"];
-    $q4 = $_POST["question4"];
+    $q1 = $_POST["q1_answer"];
+    $q2 = $_POST["q2_answer"];
+    $q3 = $_POST["q3_answer"];
+    $q4 = $_POST["q4_answer"];
 
     require_once './functions.inc.php';
 
-    $avg = scoreQuiz($quiz_id, $q1, $q2, $q3, $q4);
-    if (isset($_SESSION["username"])) {
-        logQuiz($quiz_id, $avg);
+    $score = scoreQuiz($conn, $quiz_id, $q1, $q2, $q3, $q4);
+    $res = 0;
+    if (isset($_SESSION["userid"])) {
+        $res = logQuiz($conn, $quiz_id, $score, $_SESSION["userid"]);
     }
-    header("location: ../quiz.php?score=".$avg."&quiz=".$quiz_id."&submit=1");
+    header("location: ../quiz.php?score=".$score."&quiz=".$quiz_id."&submit=1");
     exit();
 } else {
     header("location: ../quiz.php");
