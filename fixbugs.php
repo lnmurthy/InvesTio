@@ -27,7 +27,7 @@ include_once './header.php';
   </section>
 
   <div class="container">
-    <form method="POST" action="./includes/feedback.inc.php?form=lesson" enctype="application/x-www-form-urlencoded">
+    <form method="POST" action="./includes/feedback.inc.php?form=bug" enctype="application/x-www-form-urlencoded">
       <div class="form-group">
         <label for="name">Start Here</label>
         <?php

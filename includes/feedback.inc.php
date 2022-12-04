@@ -1,10 +1,13 @@
 <?php
+session_start();
+
+
 if (isset($_POST["submit"])) {
     include_once './functions.inc.php';
 
     $feedback_type = $_GET["form"];
-    $userid = NULL;
-    $username = NULL;
+    $userid = null;
+    $username = null;
     $subject = $_POST["subject"];
     $textbox = $_POST["textbox"];
     
