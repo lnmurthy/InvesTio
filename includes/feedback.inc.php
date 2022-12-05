@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
         $username = $_POST["username"];
     }
 
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
     insertFeedback($conn, $feedback_type, $userid, $username, $subject, $textbox);
 
     header("location: ../feedback.php?submit=1");

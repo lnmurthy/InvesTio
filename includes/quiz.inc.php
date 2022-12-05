@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_POST["submit"])) {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     $quiz_id = $_GET["quiz_id"];
     $q1 = $_POST["q1_answer"];

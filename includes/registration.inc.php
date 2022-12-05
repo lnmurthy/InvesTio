@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
 
     require_once './functions.inc.php';
 
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     if (emptyInputSignup($uname, $email, $pwd, $pwdRepeat) !== false) {
         header("location: ../registration.php?error=emptyinput");

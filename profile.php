@@ -42,7 +42,7 @@ if (!isset($_SESSION["userid"])) {
                             </div>
                             <h3 class="card-title mb-3">Lesson Progress</h3>
                             <p class="card-text">
-                                Your progress through the lessons
+                                Your progress through the lessons:
                             </p>
                             <p>
                                 You have completed
@@ -63,14 +63,16 @@ if (!isset($_SESSION["userid"])) {
                             </div>
                             <h3 class="card-title mb-3">Quiz Progress</h3>
                             <p class="card-text">
-                                Your progress through the quizzes
+                                Your progress through the quizzes:
                             </p>
-                            You have completed
-                            <?php
-                            include_once "./includes/functions.inc.php";
-                            echo getQuizProgress($_SESSION["userid"]);
-                            ?>
-                            out of 3 quizzes
+                            <p>
+                                You have completed
+                                <?php
+                                include_once "./includes/functions.inc.php";
+                                echo " " . getQuizProgress($_SESSION["userid"]) . " ";
+                                ?>
+                                out of 3 quizzes
+                            </p>
                         </div>
                     </div>
                 </div>

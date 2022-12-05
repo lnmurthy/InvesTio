@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
 
     require_once './functions.inc.php';
     
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     if(emptyInputLogin($conn, $uname, $pwd) !== false) {
         header("location: ../login.php?error=emptyinput");

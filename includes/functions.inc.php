@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+
 function emptyInputSignup($uname, $email, $pwd, $pwdRepeat)
 {
     $result = false;
@@ -152,7 +159,7 @@ function loginUser($conn, $uname, $pwd)
 function validQuiz($lesson_name)
 {
     $res = [];
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
     if (isset($_SESSION["username"])) {
         $user_id_bv = $_SESSION["userid"];
         $lesson_name_bv = $lesson_name;
@@ -171,7 +178,7 @@ function validQuiz($lesson_name)
 
 function completeLesson($lesson_name)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     // Log results in DB
     $sql = "INSERT INTO COMPLETE_LESSON(LESSON_NAME, USER_ID) VALUES (:lesson_name, :user_id)";
@@ -184,7 +191,7 @@ function completeLesson($lesson_name)
 function logQuiz($conn, $quiz_id, $score, $user_id)
 {
 
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
     // Log results in DB
     $sql = "INSERT INTO QUIZ_RESULT(QUIZ_ID, USER_ID, SCORE) VALUES (:quiz_id, :user_id, :score)";
     $s = oci_parse($conn, $sql);
@@ -236,7 +243,7 @@ function insertFeedback($conn, $feedback_type, $userid, $username, $subject, $te
 
 function getLessonProgress($userid)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     $sql = "SELECT * FROM COMPLETE_LESSON WHERE USER_ID = :userid";
     $s = oci_parse($conn, $sql);
@@ -251,7 +258,7 @@ function getLessonProgress($userid)
 
 function getQuizProgress($userid)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     $sql = "SELECT * FROM QUIZ_RESULT WHERE USER_ID = :userid";
     $s = oci_parse($conn, $sql);
@@ -266,7 +273,7 @@ function getQuizProgress($userid)
 
 function getQuizScore($quizid)
 {
-    $conn = oci_pconnect("SYSTEM", "password", "192.168.1.167/XE");
+    $conn = oci_pconnect("SYSTEM", "password", "localhost/XE");
 
     $sql =
         "SELECT MAX(SCORE) AS MAXSCORE 
@@ -286,4 +293,35 @@ function getQuizScore($quizid)
     }
 
     return $res[0]['MAXSCORE'];
+}
+
+function sendMailer($recipient)
+{
+    //Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer();
+
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'ssl'; 
+
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 465;
+
+    $mail->Username = 'invesTioSD@gmail.com';
+    $mail->Password = 'hybemjlbofowmvjv';
+
+    $mail->SetFrom('investiosd@gmail.com', 'InvesTio');
+    $mail->AddAddress($recipient, 'NewUser');
+
+    $mail->Subject = 'Welcome to InvesTio!';
+    $mail->Body = 'Prepare to learn!';
+    $mail->isHTML(true);
+    
+    $mail->Send();
+
+    if (!$mail->send()) {
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message sent!';
+    }
 }

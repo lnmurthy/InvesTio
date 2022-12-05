@@ -48,11 +48,11 @@ include_once './header.php';
         $msg = $_GET["msg"];
         if ($msg == "bademail") {
           echo "<div style = 'position:relative; left:500px; top:2px;'>
-                  <h3 style='color:darkred'>Enter a valid email!</h3>
+                  <h3 style='color:white'>Invalid email address. Please try again!</h3>
                   </div>";
         } else {
           echo "<div style = 'position:relative; left:500px; top:2px;'>
-                  <h3 style='color:darkgreen'>Successfully signed up for our newsletter!</h3>
+                  <h3 style='color:white'>Successfully signed up for our newsletter!</h3>
                   </div>";
         }
       }
