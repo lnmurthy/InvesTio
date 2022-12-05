@@ -307,10 +307,10 @@ function sendMailer($recipient)
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 465;
 
-    $mail->Username = 'invesTioSD@gmail.com';
-    $mail->Password = 'hybemjlbofowmvjv';
+    $mail->Username = '';
+    $mail->Password = '';
 
-    $mail->SetFrom('investiosd@gmail.com', 'InvesTio');
+    $mail->SetFrom('', 'InvesTio');
     $mail->AddAddress($recipient, 'NewUser');
 
     $mail->Subject = 'Welcome to InvesTio!';
