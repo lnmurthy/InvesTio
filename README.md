@@ -1,4 +1,5 @@
 # InvesTio: Empowering Youth with Financial Literacy
+<img width="785" alt="Screenshot 2024-02-08 at 15 07 39" src="https://github.com/lnmurthy/InvesTio/assets/60281490/5b1b84f4-6bd2-4683-9314-a345549c3263">
 
 ### Team Members and Roles:
 
